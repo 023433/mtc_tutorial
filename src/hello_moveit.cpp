@@ -15,7 +15,6 @@ int main(int argc, char * argv[])
   // Create a ROS logger
   auto const logger = rclcpp::get_logger("hello_moveit");
 
-
   // Create the MoveIt MoveGroup Interface
   using moveit::planning_interface::MoveGroupInterface;
   auto move_group_interface = MoveGroupInterface(node, "arm");
