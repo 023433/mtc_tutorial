@@ -102,9 +102,9 @@ mtc::Task MTCTaskNode::createTask()
   task.stages()->setName("demo task");
   task.loadRobotModel(node_);
 
-  const auto& arm_group_name = "panda_arm";
-  const auto& hand_group_name = "hand";
-  const auto& hand_frame = "panda_hand";
+  const auto& arm_group_name = "arm";
+  const auto& hand_group_name = "gripper";
+  const auto& hand_frame = "gripper";
 
   // Set task properties
   task.setProperty("group", arm_group_name);
