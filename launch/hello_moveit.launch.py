@@ -8,9 +8,13 @@ def generate_launch_description():
   moveit_config = MoveItConfigsBuilder("omx_moveit", package_name="omx_moveit").to_moveit_configs()
   moveit_config.to_dict().update({'use_sim_time' : True})
 
-  x = LaunchConfiguration('x', default='0.0')
-  y = LaunchConfiguration('y', default='0.0')
-  z = LaunchConfiguration('z', default='0.0')
+  x = LaunchConfiguration('x', default='0.15')
+  y = LaunchConfiguration('y', default='-0.1')
+  z = LaunchConfiguration('z', default='0.3')
+  ox = LaunchConfiguration('ox', default='0.0')
+  oy = LaunchConfiguration('oy', default='0.0')
+  oz = LaunchConfiguration('oz', default='0.0')
+  ow = LaunchConfiguration('ow', default='1.0')
 
   joint1 = LaunchConfiguration('joint1', default='0.0')
   joint2 = LaunchConfiguration('joint2', default='0.0')
@@ -30,12 +34,17 @@ def generate_launch_description():
         "x": x,
         "y": y,
         "z": z,
+        "ox": ox,
+        "oy": oy,
+        "oz": oz,
+        "ow": ow,
         "joint1": joint1,
         "joint2": joint2,
         "joint3": joint3,
         "joint4": joint4,
       }
     ],
+    
   )
 
   return LaunchDescription([hello_moveit_node])
