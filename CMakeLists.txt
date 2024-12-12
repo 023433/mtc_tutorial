@@ -11,6 +11,8 @@ find_package(ament_cmake_python REQUIRED)
 find_package(moveit_task_constructor_core REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
+find_package(control_msgs REQUIRED)
+find_package(rclcpp_action REQUIRED)
 
 add_executable(mtc_node src/mtc_node.cpp)
 
@@ -34,9 +36,20 @@ ament_target_dependencies(
   "rclcpp"
 )
 
+add_executable(gripper src/gripper.cpp)
+target_compile_features(gripper PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+ament_target_dependencies(
+  gripper
+  rclcpp_action
+  control_msgs
+  "rclcpp"
+)
+
+
 install(TARGETS 
   mtc_node
   hello_moveit
+  gripper
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch
