@@ -60,6 +60,13 @@ install(DIRECTORY launch
 # install python modules
 ament_python_install_package(${PROJECT_NAME})
 
+# install python executables
+install(PROGRAMS
+  scripts/obj_aruco.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 install(DIRECTORY scripts DESTINATION share/${PROJECT_NAME})
 

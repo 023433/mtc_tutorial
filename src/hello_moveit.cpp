@@ -15,6 +15,7 @@ void printPlan(const moveit::planning_interface::MoveGroupInterface::Plan& plan)
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Planning Time: %.2f seconds", plan.planning_time_);
 
   const auto& points = plan.trajectory_.joint_trajectory.points;
+  const auto& joint_names = plan.trajectory_.joint_trajectory.joint_names;
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Number of Trajectory Points: %zu", points.size());
 
   for (size_t i = 0; i < points.size(); ++i) {
@@ -22,8 +23,8 @@ void printPlan(const moveit::planning_interface::MoveGroupInterface::Plan& plan)
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Point %zu:", i + 1);
 
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "  Positions: ");
-    for (const auto& position : point.positions) {
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "%.2f ", position);
+    for (size_t idx = 0; idx < point.positions.size(); idx++) {
+      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Name: %s Point %.2f:", joint_names[idx].c_str(), point.positions[idx]);
     }
   }
 }
