@@ -20,8 +20,12 @@ public:
     }
     RCLCPP_INFO(this->get_logger(), "Action server is available.");
 
+    this->declare_parameter<double>("position", 0.1);
+
+    double position = this->get_parameter("position").as_double();
+
     // Send a goal
-    send_goal(0.6, 5.0); // Example: Position = 0.05, Max Effort = 5.0
+    send_goal(position, 5.0); // Example: Position = 0.05, Max Effort = 5.0
   }
 
   

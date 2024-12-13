@@ -20,6 +20,7 @@ def generate_launch_description():
   joint2 = LaunchConfiguration('joint2', default='0.0')
   joint3 = LaunchConfiguration('joint3', default='0.0')
   joint4 = LaunchConfiguration('joint4', default='0.0')
+  action = LaunchConfiguration('action', default='init')
 
 
   # Define hello_moveit node
@@ -42,6 +43,7 @@ def generate_launch_description():
         "joint2": joint2,
         "joint3": joint3,
         "joint4": joint4,
+        "action": action,
       }
     ],
     
